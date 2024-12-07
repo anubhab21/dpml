@@ -77,7 +77,7 @@ ques_df.head()
 final_df = new_df.drop(columns=['id','qid1','qid2','question1','question2'])
 print(final_df.shape)
 final_df.head()
-from sklearn.feature_extraction.text import CountVectorizer
+from scikit-learn.feature_extraction.text import CountVectorizer
 # merge texts
 questions = list(ques_df['question1']) + list(ques_df['question2'])
 
@@ -90,10 +90,10 @@ temp_df.shape
 final_df = pd.concat([final_df, temp_df], axis=1)
 print(final_df.shape)
 final_df.head()
-from sklearn.model_selection import train_test_split
+from scikit-learn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(final_df.iloc[:,1:].values,final_df.iloc[:,0].values,test_size=0.2,random_state=1)
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from scikit-learn.ensemble import RandomForestClassifier
+from scikit-learn.metrics import accuracy_score
 rf = RandomForestClassifier()
 rf.fit(X_train,y_train)
 y_pred = rf.predict(X_test)
